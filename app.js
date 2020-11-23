@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended:false}));
     res.send('<form action="/product" method="POST" > <input name="title" type="text" ><button type="submit" >Add Product</button></form>')
 });
 
-app.use('/product',(req,res,next)=>{
+app.post('/product',(req,res,next)=>{
     console.log(req.body);
     res.redirect('/');
 });

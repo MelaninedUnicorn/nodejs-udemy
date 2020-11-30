@@ -9,7 +9,9 @@ const shopRoutes = require('./routes/shop');
  
 const app = express();
 
-
+app.set('view engine','pug');
+// if your views were stored else where you would put 
+app.set('views','views');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname,'public')));

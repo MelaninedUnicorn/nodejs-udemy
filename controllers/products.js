@@ -20,13 +20,16 @@ exports.postAddProduct = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
 
-    const products = Product.fetchAll();
-  // will use default templating engine
-  res.render("shop", {
-    prods: products,
-    pageTitle: "Shop",
-    path: "/",
-    hasProducts: products.length > 0,
-    activeShop: true,
-  });
+    Product.fetchAll((products)=>{ 
+        res.render("shop", {
+            prods: products,
+            pageTitle: "Shop",
+            path: "/",
+            hasProducts: products.length > 0,
+            activeShop: true,
+          });
+    });
+    
+   
+  
 };

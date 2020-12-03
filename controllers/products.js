@@ -1,20 +1,32 @@
-const products = [];
+const Product = require('../models/product');
+
 
 exports.getAddProduct = (req, res, next) => {
-
-    // res.sendFile(path.join(rootDir,'views','add-product.html'))
-    res.render('add-product',{pageTitle: 'Add Product', path:"/admin/add-product", formsCss : true,productCss:true, activeAddProduct:true});
-}
+  // res.sendFile(path.join(rootDir,'views','add-product.html'))
+  res.render("add-product", {
+    pageTitle: "Add Product",
+    path: "/admin/add-product",
+    formsCss: true,
+    productCss: true,
+    activeAddProduct: true,
+  });
+};
 
 exports.postAddProduct = (req, res, next) => {
-    products.push({title: req.body.title});
-
-    res.redirect('/');
-}
+    const product = new Product(req.body.title);
+    product.save();
+  res.redirect("/");
+};
 
 exports.getProduct = (req, res, next) => {
-    
-    // will use default templating engine
-res.render('shop',{prods:products, pageTitle: 'Shop',path:'/',hasProducts: products.length > 0 , activeShop: true });
 
-}
+    const products = Product.fetchAll();
+  // will use default templating engine
+  res.render("shop", {
+    prods: products,
+    pageTitle: "Shop",
+    path: "/",
+    hasProducts: products.length > 0,
+    activeShop: true,
+  });
+};

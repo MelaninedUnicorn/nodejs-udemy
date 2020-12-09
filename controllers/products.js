@@ -12,13 +12,12 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-
   const title = req.body.title;
-  const imageUrl  = req.body.imageUrl;
+  const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  const product = new Product(title,imageUrl,description,price);
-  
+  const product = new Product(title, imageUrl, description, price);
+
   product.save();
   res.redirect("/");
 };
@@ -41,7 +40,6 @@ exports.getAdminProducts = (req, res, next) => {
       pageTitle: "Admin Products",
       path: "/admin/products",
       hasProducts: products.length > 0,
-       
     });
   });
 };
@@ -57,6 +55,13 @@ exports.getCheckout = (req, res, next) => {
   res.render("shop/checkout", {
     pageTitle: "Checkout",
     path: "/checkout",
+  });
+};
+
+exports.getOrders = (req, res, next) => {
+  res.render("shop/orders", {
+    pageTitle: "Orders",
+    path: "/orders",
   });
 };
 

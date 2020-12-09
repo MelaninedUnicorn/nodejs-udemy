@@ -1,28 +1,14 @@
- 
-button {
-    font: inherit;
-    border: 1px solid #00695c;
-    color: #00695c;
-    background: white;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-button:hover,
-button:active {
-    background: #00695c;
-    color: white;
-}
-
 .product-form {
     width: 20rem;
     max-width: 90%;
     margin: auto;
+    display: block;
 }
 
 .product-item {
     width: 20rem;
     max-width: 95%;
+    margin: 1rem;
 }
 
 .product__title {
